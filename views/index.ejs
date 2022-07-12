@@ -1,0 +1,176 @@
+<div class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4">
+    <div class="col-12 col-lg-6">
+        <img src="/img/hero-image3.jpg" width="607" height="510" class="d-block mx-lg-auto img-fluid" loading="lazy" alt="La Cocineta Project">
+     </div>
+
+     <div class="col-12 col-lg-6">
+
+        <h1 class="display-5 fw-bold mb-3 txt">
+         <span>Una</span> <span>gran</span> <span>selección</span> 
+         <span>de</span> <span>exquisitas</span> <span>recetas</span>
+        </h1>
+
+        <p class="lead">
+          La cocineta project es tu aliado en el maravilloso mundo de la cocina. Si te gusta cocinar y probar nuevos sabores del mundo esta app es para ti. Una comunidad donde puedes compartir tus más exquisitos secretos culinarios. 
+        </p>
+
+        <div class="d-ggrid gap-2 d-md-flex justify-content-md-start ">
+          
+         <a href="/explore-latest" class="miBoton">Mira lo ultimo</a>
+         <a href="/explore-random" class="miBoton">Receta aleatoria</a>
+
+
+        </div>
+
+     </div>
+</div>
+
+<!-- Categorias-->
+
+<div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
+
+    <% if (categories != '') { %>
+     <% categories.forEach(function(category, index) {%>
+        <a href="/categories/<%- category.name %>" class="col text-center category__link">
+            <div class="category__img shadow">
+                <img src="img/<%- category.image %>" alt="<%- category.name %>" loading="lazy">
+            </div>
+            <div class="pt-1"><%- category.name %></div>
+        </a>
+       <% }) %>  
+    <% } %>
+   
+
+    <a href="/categories" class="col text-center category__link">
+        <div class="category__img shadow">
+            <img src="img/view-all.jpg"alt="Ver todas las categorias" loading="lazy">
+        </div>
+        <div class="pt-1">Ver todo</div>
+    </a>
+</div>
+<!--Fin categorias-->
+
+<!--Ultimas recetas-->
+
+<section class="pb-4 pt-4">
+    <div class="d-flex mb-2 align-items-center">
+        <h2>Últimas Recetas</h2>
+      <a href="/explore-latest" class="ms-auto">Ver Más</a>
+    </div>
+
+        <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+
+         <% if (food != '') { %>
+            <% food.latest.forEach(function(recipe, index){ %>
+             <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
+                <div class="category__img category__img--large shadow">
+                  <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+                </div>
+                <div class="pt-1"><%= recipe.name %></div>
+            </a>    
+        <% }) %>  
+      <% } %>
+         
+    </div>
+
+</section>
+
+<!--Fin Ultimas recetas-->
+
+<!--Tailandesas-->
+
+<section class="pb-4 pt-4">
+    <div class="d-flex mb-2 align-items-center">
+        <h2>Recetas Colombianas</h2>
+      <a href="/categories/Colombiana" class="ms-auto">Ver Más</a>
+    </div>
+
+        <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+
+         <% if (typeof food.col != 'undefined' && food.col.length > 0) { %>
+            <% food.col.forEach(function(recipe, index){ %>
+             <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
+                <div class="category__img category__img--large shadow">
+                  <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+                </div>
+                <div class="pt-1"><%= recipe.name %></div>
+            </a>    
+            <% }) %>  
+            <% }else{ %>
+              <p>No se encuentran datos.</p>
+            <% } %> 
+         
+    </div>
+
+</section>
+
+<!--Fin Tailandesas-->
+
+<!--China-->
+
+<section class="pb-4 pt-4">
+    <div class="d-flex mb-2 align-items-center">
+        <h2>Recetas Chinas</h2>
+      <a href="/categories/China" class="ms-auto">Ver Más</a>
+    </div>
+
+        <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+         <% if (typeof food.chinese != 'undefined' && food.chinese.length > 0) { %>
+            <% food.chinese.forEach(function(recipe, index){ %>
+             <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
+                <div class="category__img category__img--large shadow">
+                  <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+                </div>
+                <div class="pt-1"><%= recipe.name %></div>
+            </a>    
+        <% }) %>  
+      <% }else{ %>
+        <p>No se encuentran datos.</p>
+      <% } %> 
+    </div>
+
+</section>
+
+<!--Fin China-->
+
+
+<!--Arabe-->
+
+<section class="pb-4 pt-4">
+    <div class="d-flex mb-2 align-items-center">
+        <h2>Recetas Arabes</h2>
+      <a href="/categories/Arabe" class="ms-auto">Ver Más</a>
+    </div>
+
+        <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+         <% if (typeof food.arab != 'undefined' && food.arab.length > 0) { %>
+            <% food.arab.forEach(function(recipe, index){ %>
+             <a href="/recipe/<%= recipe._id %>" class="col text-center category__link">
+                <div class="category__img category__img--large shadow">
+                  <img src="/uploads/<%= recipe.image %>" alt="<%= recipe.name %>" loading="lazy">
+                </div>
+                <div class="pt-1"><%= recipe.name %></div>
+            </a>    
+        <% }) %>  
+      <% }else{ %>
+        <p>No se encuentran datos.</p>
+      <% } %> 
+    </div>
+
+</section>
+
+<!--Fin Arabe-->
+
+<!--Enviar-->
+
+<section class="px-4 py-5 my-5 text-center">
+
+      <img src="/img/img-down.png" class="d-block mx-auto mb-4 img-fluid" alt="Publica tu receta gratis" width="566" height="208" Loading="lazy">
+      <h1 class="display-5 fw-bold">Publica tu receta gratis</h1>
+      <p class="lead mb-4  ">Sube tu receta para comartirla con miles de personas</p>
+      <a href="/submit-recipe" class="btn btn-primary btn-dark btn-lg ov-btn-slide-left ">Manda tu receta</a>
+     
+
+</section>
+
+<!--Fin Enviar-->
